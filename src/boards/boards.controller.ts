@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, UsePipes, Validation
 import { BoardsService } from './boards.service';
 import { Board, BoardStatus } from './board.model';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
 
 @Controller('boards')
 export class BoardsController {
@@ -45,7 +46,8 @@ export class BoardsController {
     @Patch('/:id/status')
     updateBoardStatus(
         @Param('id') id: string,
-        @Body('status') status: BoardStatus){
+        // status 값만 유효성 체크를 하면 되므로, parameter level의 pipe 사용
+        @Body('status', BoardStatusValidationPipe) status: BoardStatus){
         return this.boardsService.updateBoardStatus(id, status);
     }
 }
