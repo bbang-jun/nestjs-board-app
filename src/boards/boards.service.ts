@@ -35,4 +35,10 @@ export class BoardsService {
         // 삭제하고자 하는 id가 다른 것만 boards에 남김으로써 삭제하고자 id는 필터에서 제외됨.
         this.boards = this.boards.filter((board) => board.id !== id);
     }
+
+    updateBoardStatus(id: string, status: BoardStatus): Board{
+        const board = this.getBoardById(id);
+        board.status = status;
+        return board;
+    }
 }
