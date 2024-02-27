@@ -19,6 +19,11 @@ nest new ./
 yarn run start:dev
 ```
 
+- 파이프 모듈 설치
+```bash
+yarn add class-validator class-transformer --save
+```
+
 - src/main.ts: 앱을 생성하고 실행하는 시작점이 되는 파일(entry point)
 - src/app.module.ts: 앱 모듈을 정의
 - .eslintrc.js: 문법 오류 검출 목적 파일
